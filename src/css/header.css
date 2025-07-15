@@ -1,0 +1,27 @@
+.header {
+  @apply flex justify-between items-center py-[2rem] px-[4.8rem] z-10 bg-[#fffbf4];
+}
+.header--light {
+  @apply text-white bg-[#ce822f];
+}
+.header--white {
+  filter: invert(100%) sepia(0%) saturate(7499%) hue-rotate(25deg) brightness(102%) contrast(101%);
+}
+.header img {
+  @apply h-auto w-[5rem];
+}
+.header__logo {
+  @apply h-auto w-[5rem];
+}
+.header__logo--black {
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(25deg) brightness(102%) contrast(101%);
+}
+.header__logo--white {
+  filter: invert(100%) sepia(0%) saturate(7499%) hue-rotate(25deg) brightness(102%) contrast(101%);
+}
+.header__nav {
+  @apply flex list-none;
+}
+.header__nav li:not(:last-of-type) {
+  @apply mr-[4.6rem];
+}

@@ -1,0 +1,28 @@
+.article-overview {
+  @apply flex justify-between mt-[4rem] mb-[12rem];
+}
+.article-overview__info {
+  @apply w-[60%];
+}
+.article-overview__headline {
+  @apply mb-[2.4rem] text-[#333];
+}
+.article-overview__description {
+  @apply text-[2.4rem] leading-[1.5] text-[#666];
+}
+.article-overview__contents {
+  @apply w-[35%] p-[3rem] text-[2rem] text-[#333] list-none;
+}
+.article-overview__contents li {
+  @apply mb-[1.8rem] text-right;
+}
+.article-overview__contents li:last-child {
+  @apply mb-0;
+}
+.article-overview__contents li a {
+  @apply text-[#0041e8] underline transition-all duration-200 block p-[1rem] rounded-[0.8rem];
+}
+.article-overview__contents li a:hover {
+  color: #0031b8;
+  @apply underline translate-x-[5px];
+}

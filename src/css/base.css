@@ -1,0 +1,58 @@
+
+
+body {
+  @apply bg-gray-200;
+}
+
+main {
+  @apply min-h-[calc(100vh-13rem)];
+}
+
+a {
+  @apply text-inherit no-underline;
+}
+
+a:hover,
+a:focus {
+  @apply no-underline;
+}
+
+a.btn {
+  @apply inline-block;
+}
+
+html {
+  @apply scroll-smooth;
+  @apply font-sans font-normal;
+  @apply text-[62.5%];
+}
+
+@media (max-width: 900px) {
+  html {
+    @apply text-[55%];
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    @apply text-[50%];
+  }
+}
+
+@media (min-width: 1800px) {
+  html {
+    @apply text-[75%];
+  }
+}
+
+.bold {
+  @apply font-bold;
+}
+
+.container {
+  @apply max-w-screen mx-auto;
+}
+
+img {
+  @apply rounded-lg;
+}

@@ -1,0 +1,51 @@
+.signup-form {
+  @apply flex justify-between mb-[6rem];
+}
+.signup-form__headline {
+  @apply mb-[3rem];
+}
+.signup-form__info {
+  @apply w-[49%];
+}
+.signup-form__info .copy:not(:last-of-type) {
+  @apply mb-[1.6rem];
+}
+.signup-form__form {
+  @apply w-[45%];
+}
+.signup-form__form .input {
+  @apply w-full;
+}
+.signup-form__form .input__container {
+  @apply mb-[4rem];
+}
+.signup-form__form .btn {
+  @apply mt-[2rem];
+}
+.signup-form__name-container {
+  @apply flex justify-between;
+}
+.signup-form__name-container .input__container {
+  @apply w-[48%];
+}
+.signup-form__error {
+  @apply text-red-800 text-[2rem] text-center mt-[1.6rem];
+}
+.signup-form__success {
+  @apply text-green-800 text-[2rem] text-center mt-[1.6rem];
+}
+.signup-form__image {
+  @apply mt-[10rem] mb-[2rem] object-cover object-center h-[400px] w-full;
+}
+.signup-form__price {
+  @apply text-[2.4rem] mt-[1.6rem];
+}
+.signup-form__price span {
+  @apply font-bold;
+}
+.signup-form__date {
+  @apply text-[2.4rem];
+}
+.signup-form__date span {
+  @apply font-bold;
+}

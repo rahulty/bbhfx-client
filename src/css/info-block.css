@@ -1,0 +1,31 @@
+.info {
+  @apply flex justify-between items-center pr-[4.8rem] mt-[8rem] mb-[8rem];
+}
+.info--reversed {
+  @apply flex-row-reverse pl-[4.8rem] pr-0;
+}
+.info--reversed .info__image {
+  border-radius: 329px 0px 0px 329px;
+}
+.info__image,
+.info__text {
+  @apply w-[48%];
+}
+.info__image {
+  border-radius: 0px 329px 329px 0px;
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+}
+.info__headline {
+  @apply mt-[4rem] mb-[3rem];
+}
+.info__headline--turquoise {
+  @apply text-[#14a998];
+}
+.info__headline--orange {
+  @apply text-[#ce822f];
+}
+.info .btn {
+  @apply mt-[3rem];
+}

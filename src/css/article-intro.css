@@ -1,0 +1,12 @@
+.article-intro {
+  @apply pt-[35rem] px-[4.8rem] pb-0 h-[83rem];
+}
+.article-intro__background {
+  @apply absolute top-0 left-0 z-[-1] w-full h-[83rem];
+}
+.article-intro__background img {
+  @apply w-full h-full object-cover object-bottom rounded-b-[20rem];
+}
+.article-intro__headline {
+  @apply w-[59rem] mb-[2.4rem];
+}

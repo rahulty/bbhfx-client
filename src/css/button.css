@@ -1,0 +1,24 @@
+.btn {
+  @apply text-[2.5rem];
+}
+.btn--small {
+  @apply py-[1rem] px-[1.8rem] rounded-[2.5rem];
+}
+.btn--medium {
+  @apply py-[1.6rem] px-[3.2rem] rounded-[3.2rem];
+}
+.btn--black {
+  @apply bg-black text-white;
+}
+.btn--inverse {
+  @apply bg-white text-black;
+}
+.btn--turquoise {
+  @apply bg-[#14a998] text-white;
+}
+.btn--orange {
+  @apply bg-[#ce822f] text-white;
+}
+.btn--beige {
+  @apply bg-[#d7c094] text-white;
+}

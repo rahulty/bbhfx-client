@@ -1,0 +1,25 @@
+.pagination-nav {
+  @apply flex justify-center py-[1rem] text-[1.75rem];
+}
+.pagination-list {
+  @apply flex items-center gap-[0.75rem] list-none;
+}
+.pagination-arrow {
+  @apply py-[0.625rem] px-[1.25rem] rounded-[0.5rem] bg-gray-100 text-gray-600 transition-all duration-200;
+}
+.pagination-arrow:hover:not(.disabled) {
+  @apply bg-gray-200 text-gray-800;
+  transform: translateY(-1px);
+}
+.pagination-arrow.disabled {
+  @apply opacity-40 cursor-not-allowed;
+}
+.pagination-arrow.disabled:hover {
+  transform: none;
+}
+.page-number {
+  @apply py-[0.625rem] px-[1rem] font-semibold text-gray-600 min-w-[2.5rem] text-center;
+}
+.page-number.active {
+  @apply bg-gray-200 rounded-[0.5rem] text-gray-900;
+}

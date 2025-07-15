@@ -1,0 +1,6 @@
+.search {
+  @apply w-full max-w-[80rem] mx-auto mb-[6rem];
+}
+.search input {
+  @apply w-full p-[1rem_2rem] rounded-[1rem] border border-[#f1e8d9] text-[1.6rem];
+}

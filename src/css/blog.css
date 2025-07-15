@@ -1,0 +1,10 @@
+.blog-page,
+.events-page {
+  @apply py-[6rem] px-[4.8rem] pb-[12rem];
+}
+.event-page {
+  @apply mt-[5rem];
+}
+.article-section {
+  @apply px-[4.8rem] mb-[12rem];
+}

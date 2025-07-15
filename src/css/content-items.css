@@ -1,0 +1,45 @@
+.content-items {
+  @apply mb-[12rem];
+}
+.content-items__container {
+  @apply grid;
+}
+.content-items__container--card {
+  @apply grid grid-cols-9 gap-[2rem];
+}
+.content-items__container--card .content-items__card {
+  @apply col-span-3;
+}
+.content-items__headline {
+  @apply mb-[6rem];
+}
+.content-items--center {
+  @apply text-center;
+}
+.content-items--right {
+  @apply text-right;
+}
+.content-items--left {
+  @apply text-left;
+}
+.content-items__card-img {
+  @apply w-full h-[35.5rem];
+}
+.content-items__card-img img {
+  @apply w-full h-full object-cover rounded-t-[3.5rem];
+}
+.content-items__card-text {
+  @apply flex flex-col justify-between p-[2rem_3rem_3.5rem] bg-[#f1e8d9] rounded-b-[3.5rem] flex-grow;
+}
+.content-items__card-text h5 {
+  @apply mb-[1rem];
+}
+.content-items__card-text p {
+  @apply mb-[1rem] text-[1.6rem];
+}
+.content-items__card-text--event h5 {
+  @apply mb-[3rem];
+}
+.content-items__card-text--event .bold {
+  @apply mt-auto;
+}

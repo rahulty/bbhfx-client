@@ -1,0 +1,24 @@
+.newsletter {
+  @apply flex flex-row justify-between items-center bg-[#d7c094] py-[3.8rem] px-[2.1rem] pl-[4.8rem] rounded-[3.35rem] mb-[10rem];
+}
+.newsletter__info h4 {
+  @apply mb-[2.3rem];
+}
+.newsletter__form {
+  @apply flex items-center ml-[3rem];
+}
+.newsletter__email {
+  @apply bg-[#fffbf4] w-[35rem] h-[6.4rem] rounded-l-[1.8rem] pl-[2.1rem];
+}
+.newsletter__subscribe {
+  @apply h-[6.4rem] w-[23rem] rounded-r-[1.8rem];
+}
+.newsletter__thanks {
+  @apply w-full text-center;
+}
+.newsletter__email--error {
+  @apply border border-red-600 outline-red-600;
+}
+.newsletter__email--error::placeholder {
+  color: red;
+}

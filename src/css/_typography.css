@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans:wght@300;400;500&display=swap");
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-serif;
+}
+
+h1 {
+  @apply text-[10rem] leading-[12rem] font-medium;
+}
+
+h2 {
+  @apply text-[8rem];
+}
+
+h3 {
+  @apply text-[6rem] leading-[7rem];
+}
+
+h4 {
+  @apply text-[4rem] leading-[4.7rem];
+}
+
+h5 {
+  @apply text-[3rem];
+}
+
+.copy {
+  @apply text-[2rem] leading-[3rem];
+}
+
+.copy p {
+  @apply mb-12; /* Tailwind's margin-bottom for spacing */
+}
+
+.copy-small {
+  @apply text-[15px];
+}

@@ -1,0 +1,19 @@
+.input {
+  @apply outline-none border-none text-[2rem];
+}
+.input::placeholder {
+  color: black;
+  font-size: 2rem;
+}
+.input--beige {
+  @apply h-[6.4rem] rounded-[1.8rem] p-[2rem] bg-[#f1e8d9];
+}
+.input__error {
+  @apply text-red-600 text-[1.6rem] mt-[1.6rem];
+}
+.input__container .input {
+  @apply block;
+}
+.input__container label {
+  @apply block mb-[1.6rem];
+}

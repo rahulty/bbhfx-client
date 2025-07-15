@@ -1,0 +1,12 @@
+.featured-article {
+  @apply flex justify-between items-start w-full mb-[10rem] mt-[6rem];
+}
+.featured-article__info {
+  @apply w-[49%];
+}
+.featured-article__info .copy {
+  @apply mt-[4rem] mb-[3rem];
+}
+.featured-article img {
+  @apply w-[49%] h-[450px] object-cover rounded-[4rem];
+}
