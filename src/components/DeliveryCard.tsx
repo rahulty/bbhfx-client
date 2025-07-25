@@ -1,6 +1,6 @@
 "use client";
 import { useActionState, useTransition } from "react";
-import { claimDeliveryAction } from "@/data/actions";
+import { claimDeliveryAction, unClaimDeliveryAction } from "@/data/actions";
 import { ClaimedDelivery, MealDelivery } from "@/types";
 import { authStore } from "@/store/auth-store";
 import { formatDate } from "@/utils/format-date";
@@ -17,26 +17,26 @@ export function DeliveryCard(props: DeliveryCardProps) {
   } = props;
   // prettier-ignore
   const roles: Record<string, ClaimedDelivery[]> = {rider: [],buddy: [],backup: []};
+  let myClaimedDelivery = null; //'rider'||'buddy'||'backup';
   for (const cd of claimed_deliveries) {
     if (roles.hasOwnProperty(cd.type)) {
       roles[cd.type].push(cd);
     }
+    if (
+      cd.users_permissions_user?.documentId ===
+      authStore.getSnapshot().context.user?.documentId
+    ) {
+      myClaimedDelivery = cd;
+    }
   }
   const { rider, buddy, backup } = roles;
 
-  const [, ac] = useActionState(claimDeliveryAction, {
+  const [stC, ac] = useActionState(claimDeliveryAction, {
     createdClaimedDelivery: null,
   });
+  const [, unClaimAc] = useActionState(unClaimDeliveryAction, {});
   const [isPending, startTransition] = useTransition();
-  const disableClaimDelivery =
-    isPending ||
-    rider.length >= reqRiders ||
-    rider.some(
-      (r) =>
-        r.users_permissions_user?.documentId ===
-        authStore.getSnapshot().context.user?.documentId
-    ) ||
-    false;
+  const disableClaimDelivery = isPending || rider.length >= reqRiders || false;
 
   return (
     <div className="content-items__card">
@@ -65,13 +65,25 @@ export function DeliveryCard(props: DeliveryCardProps) {
             Be Buddy
           </Button>
           <div className="w-1/3 flex flex-col">
-            <Button
-              className="text-2xl h-full max-h-14"
-              onClick={() => startTransition(() => ac(documentId))}
-              disabled={disableClaimDelivery}
-            >
-              {isPending ? "Claiming..." : "Claim Delivery"}
-            </Button>
+            {myClaimedDelivery?.type === "rider" ? (
+              <Button
+                className="text-2xl h-full max-h-14"
+                variant="destructive"
+                onClick={() =>
+                  startTransition(() => unClaimAc(myClaimedDelivery.documentId))
+                }
+              >
+                Un Claim Delivery
+              </Button>
+            ) : (
+              <Button
+                className="text-2xl h-full max-h-14"
+                onClick={() => startTransition(() => ac(documentId))}
+                disabled={disableClaimDelivery}
+              >
+                {isPending ? "Claiming..." : "Claim Delivery"}
+              </Button>
+            )}
             {rider.map((r) => (
               <div key={r.documentId} className="text-sm">
                 {r?.users_permissions_user?.username}

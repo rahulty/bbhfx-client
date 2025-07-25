@@ -178,7 +178,7 @@ interface UserPermissions {
 export interface ClaimedDelivery {
   id: number;
   documentId: string;
-  type: string; // e.g., "rider"
+  type: "rider" | "buddy" | "backup";
   notes: string;
   users_permissions_user: UserPermissions;
 }

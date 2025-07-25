@@ -160,6 +160,25 @@ export const claimDeliveryAction = async (
   return {
     ...prevState,
     createdClaimedDelivery,
-    successMessage: "Falana action completed successfully!",
+    successMessage: "Delivery claimed successfully!",
+  };
+};
+
+export const unClaimDeliveryAction = async (
+  prevState: any,
+  claimedDeliveryDocumentId: string
+) => {
+  const createdClaimedDelivery = await fetchAPI(
+    `/api/claimed-deliveries/${claimedDeliveryDocumentId}`,
+    {
+      method: "DELETE",
+      authToken: (await cookies()).get("jwt")?.value,
+    }
+  );
+
+  return {
+    ...prevState,
+    createdClaimedDelivery,
+    successMessage: "Delivery unclaimed successfully!",
   };
 };
