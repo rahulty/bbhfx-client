@@ -33,6 +33,7 @@ function blockRenderer(block: Block, index: number) {
     case "blocks.content-list":
       const { comp } = block;
       const cardKey = (comp || "BlogCard") as BlockContentListCardKey;
+      // @ts-ignore
       block.component = BlockContentListCards[cardKey] || BlogCard;
       return <ContentList {...block} key={index} />;
     default:

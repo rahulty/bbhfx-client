@@ -36,6 +36,7 @@ export default async function SingleEventRoute({ params }: ParamsProps) {
         />
       </div>
       <ContentList
+        id={3}
         headline="Featured Events"
         path="/api/events"
         component={EventCard}

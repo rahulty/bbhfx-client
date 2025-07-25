@@ -22,26 +22,56 @@ import { useLocalStorage } from "@/utils/localstorage-hook";
 // import { Label } from "@/components/ui/label";
 // import { Input } from "@/components/ui/input";
 
-const Card = ({ children, ...restProps }) => (
+const Card = ({
+  children,
+  ...restProps
+}: { children: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>) => (
   <div {...restProps}>{children}</div>
 );
-const CardHeader = ({ children, ...restProps }) => (
+import {
+  ReactNode,
+  HTMLAttributes,
+  InputHTMLAttributes,
+  LabelHTMLAttributes,
+} from "react";
+
+const CardHeader = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => (
   <div {...restProps}>{children}</div>
 );
-const CardContent = ({ children, ...restProps }) => (
+const CardContent = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => (
   <div {...restProps}>{children}</div>
 );
-const CardFooter = ({ children, ...restProps }) => (
+const CardFooter = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => (
   <div {...restProps}>{children}</div>
 );
-const CardDescription = ({ children, ...restProps }) => (
+const CardDescription = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => (
   <div {...restProps}>{children}</div>
 );
-const Label = ({ children, ...restProps }) => (
+const Label = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & LabelHTMLAttributes<HTMLLabelElement>) => (
   <label {...restProps}>{children}</label>
 );
-const Input = ({ ...restProps }) => <input {...restProps} />;
-const CardTitle = ({ children, ...restProps }) => (
+const Input = ({ ...restProps }: InputHTMLAttributes<HTMLInputElement>) => (
+  <input {...restProps} />
+);
+const CardTitle = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & HTMLAttributes<HTMLHeadingElement>) => (
   <h1 {...restProps}>{children}</h1>
 );
 const INITIAL_STATE = {
@@ -108,11 +138,7 @@ export function SigninForm() {
           </CardContent>
 
           <CardFooter className="flex flex-col">
-            <SubmitButton
-              className="w-full"
-              text="Sign In"
-              loadingText="Loading"
-            />
+            <SubmitButton className="w-full" text="Sign In" />
 
             <StrapiErrors error={formState?.strapiErrors} />
           </CardFooter>

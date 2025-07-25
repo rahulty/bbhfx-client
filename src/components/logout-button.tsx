@@ -1,7 +1,10 @@
 import { logoutAction } from "@/data/auth-actions";
-// import { LogOut } from "lucide-react";
 
-const LogOut = ({ className }) => (
+type Props = {
+  className?: string | undefined;
+};
+
+const LogOut = ({ className }: Props) => (
   <span className={`icon-logout ${className}`}>LogOut</span>
 );
 

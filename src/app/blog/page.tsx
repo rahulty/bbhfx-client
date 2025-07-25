@@ -11,7 +11,7 @@ async function loader(slug: string) {
 }
 
 interface PageProps {
-  searchParams: Promise<{ page?: string; query?: string }>
+  searchParams: Promise<{ page?: string; query?: string }>;
 }
 export default async function BlogRoute({ searchParams }: PageProps) {
   const { page, query } = await searchParams;
@@ -20,6 +20,7 @@ export default async function BlogRoute({ searchParams }: PageProps) {
     <div className="blog-page">
       <BlockRenderer blocks={blocks} />
       <ContentList
+        id={2}
         headline="Check out our latest articles"
         path="/api/articles"
         component={BlogCard}

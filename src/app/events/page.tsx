@@ -9,8 +9,8 @@ import { notFound } from "next/navigation";
 async function loader(slug: string) {
   const { data } = await getContentBySlug(slug, "/api/events");
   const event = data[0];
-  console.log(event)
-  console.log(slug)
+  console.log(event);
+  console.log(slug);
 
   if (!event) throw notFound();
   return { event: event as EventProps, blocks: event?.blocks };
@@ -39,6 +39,7 @@ export default async function AllEventsRoute({
         <EventSignupForm blocks={blocks} eventId={event.documentId} />
       </div>
       <ContentList
+        id={10}
         headline="All Events"
         path="/api/events"
         query={query}

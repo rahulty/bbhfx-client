@@ -17,26 +17,56 @@ import { registerUserAction } from "@/data/auth-actions";
 
 // import { Label } from "@/components/ui/label";
 // import { Input } from "@/components/ui/input";
-const Card = ({ children, ...restProps }) => (
+import {
+  ReactNode,
+  HTMLAttributes,
+  InputHTMLAttributes,
+  LabelHTMLAttributes,
+} from "react";
+
+const Card = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => (
   <div {...restProps}>{children}</div>
 );
-const CardHeader = ({ children, ...restProps }) => (
+const CardHeader = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => (
   <div {...restProps}>{children}</div>
 );
-const CardContent = ({ children, ...restProps }) => (
+const CardContent = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => (
   <div {...restProps}>{children}</div>
 );
-const CardFooter = ({ children, ...restProps }) => (
+const CardFooter = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => (
   <div {...restProps}>{children}</div>
 );
-const CardDescription = ({ children, ...restProps }) => (
+const CardDescription = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => (
   <div {...restProps}>{children}</div>
 );
-const Label = ({ children, ...restProps }) => (
+const Label = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & LabelHTMLAttributes<HTMLLabelElement>) => (
   <label {...restProps}>{children}</label>
 );
-const Input = ({ ...restProps }) => <input {...restProps} />;
-const CardTitle = ({ children, ...restProps }) => (
+const Input = ({ ...restProps }: InputHTMLAttributes<HTMLInputElement>) => (
+  <input {...restProps} />
+);
+const CardTitle = ({
+  children,
+  ...restProps
+}: { children: ReactNode } & HTMLAttributes<HTMLHeadingElement>) => (
   <h1 {...restProps}>{children}</h1>
 );
 
@@ -50,11 +80,11 @@ export function SignupForm() {
     INITIAL_STATE
   );
 
-  console.log("## will render on client ##");
+  // console.log("## will render on client ##");
 
-  console.log(formState);
+  // console.log(formState);
 
-  console.log("###########################");
+  // console.log("###########################");
 
   return (
     <div className="w-full max-w-md">

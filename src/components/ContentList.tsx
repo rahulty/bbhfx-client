@@ -35,6 +35,7 @@ export async function ContentList(props: Readonly<ContentListProps>) {
           <Component
             key={article.documentId}
             {...article}
+            // @ts-ignore
             comp={comp}
             basePath={path}
           />
