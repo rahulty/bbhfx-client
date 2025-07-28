@@ -10,12 +10,15 @@ let remotePatterns: RemotePattern[] | undefined = [
   },
 ];
 
-if (process.env.PROD_API_DOMAIN) {
-  remotePatterns.push({
-    protocol: "https",
-    hostname: process.env.PROD_API_DOMAIN,
+if (process.env.STRAPI_API_URL) {
+  const ur = new URL(process.env.STRAPI_API_URL);
+  const obj: any = {
+    protocol: ur.protocol.replace(":", ""),
+    hostname: ur.hostname,
+    port: ur.port,
     pathname: "/uploads/**/*",
-  });
+  };
+  remotePatterns.push(obj);
 }
 
 const nextConfig: NextConfig = {
