@@ -24,6 +24,7 @@ export function DeliveryCard(props: DeliveryCardProps) {
     }
     if (
       cd.users_permissions_user?.documentId ===
+      //@ts-ignore
       authStore.getSnapshot().context.user?.documentId
     ) {
       myClaimedDelivery = cd;

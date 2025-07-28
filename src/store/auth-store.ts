@@ -20,7 +20,7 @@ export const authStore = createStore({
       };
     },
     logOut: (context, event, enq) => {
-      enq.emit.loggedOut(null);
+      enq.emit.loggedOut();
       return {
         ...context,
         user: null,

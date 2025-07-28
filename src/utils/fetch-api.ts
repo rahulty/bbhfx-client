@@ -1,5 +1,5 @@
+import { BASE_URL } from "@/data/services";
 import { axiosFetch, FetchOptions } from "./axios-fetch";
-import { getStrapiURL } from "./get-strapi-url";
 
 type NextFetchRequestConfig = {
   revalidate?: number | false;
@@ -28,7 +28,7 @@ export async function fetchAPI(url: string, options: FetchAPIOptions) {
     // ...{ next: { revalidate: 36000 } },
   };
   if (url.startsWith("/")) {
-    urlWithBase = `${getStrapiURL()}${url}`;
+    urlWithBase = `${BASE_URL}${url}`;
   }
 
   try {
