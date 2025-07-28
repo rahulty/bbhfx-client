@@ -1,6 +1,9 @@
 import { fetchAPI } from "@/utils/fetch-api";
 
-const BASE_URL = process.env.PUBLIC_API_URL ?? "http://localhost:1337";
+export const BASE_URL =
+  process.env.STRAPI_API_URL ??
+  process.env.NEXT_PUBLIC_STRAPI_API_URL ??
+  "http://localhost:1337";
 
 export async function subscribeService(email: string) {
   const url = new URL("/api/newsletter-signups", BASE_URL);

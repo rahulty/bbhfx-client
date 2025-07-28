@@ -4,11 +4,11 @@ import Link from "next/link";
 import { StrapiErrors } from "./strapi-errors";
 import { SubmitButton } from "./SubmitButton";
 import { ZodErrors } from "./ZodErrors";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { loginUserAction } from "@/data/auth-actions";
 import { authStore } from "@/store/auth-store";
 import { redirect } from "next/navigation";
-import { useLocalStorage } from "@/utils/localstorage-hook";
+import { useSelector } from "@xstate/store/react";
 
 // import {
 //   CardTitle,
@@ -76,11 +76,8 @@ const CardTitle = ({
 );
 const INITIAL_STATE = {
   zodErrors: null,
-
   strapiErrors: null,
-
   data: null,
-
   message: null,
 };
 
@@ -89,13 +86,16 @@ export function SigninForm() {
     loginUserAction,
     INITIAL_STATE
   );
-  // const [, setLsUser] = useLocalStorage("user", null);
-  if (formState?.user) {
-    authStore.trigger.setLoggedInUser({ user: formState.user });
-    localStorage.setItem("user", JSON.stringify(formState.user));
+  const user = useSelector(authStore, (s) => s.context.user);
 
-    redirect("/dashboard");
-  }
+  console.log(user, "user from authStore");
+  useEffect(() => {
+    if (formState?.user) {
+      authStore.trigger.setLoggedInUser({ user: formState.user });
+
+      redirect("/dashboard");
+    }
+  }, [formState?.user]);
 
   return (
     <div className="w-full max-w-md">

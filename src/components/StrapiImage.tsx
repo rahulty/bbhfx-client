@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getStrapiURL } from "@/utils/get-strapi-url";
+import { BASE_URL } from "@/data/services";
 
 interface StrapiImageProps {
   src: string;
@@ -24,5 +24,5 @@ export function getStrapiMedia(url: string | null) {
   if (url == null) return null;
   if (url.startsWith("data:")) return url;
   if (url.startsWith("http") || url.startsWith("//")) return url;
-  return getStrapiURL() + url;
+  return BASE_URL + url;
 }

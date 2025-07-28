@@ -1,17 +1,14 @@
 "use client";
 import { createStore } from "@xstate/store";
-const window = global?.window;
-const userFromLocalStorage = window?.localStorage?.getItem("user")
-  ? JSON.parse(window?.localStorage?.getItem("user") || "{}")
-  : null;
 
 export const authStore = createStore({
   context: {
-    user: userFromLocalStorage,
+    user: null,
     isAuthenticated: false,
   },
   emits: {
     loggedIn: (user) => ({ user }),
+    loggedOut: () => ({}),
   },
   on: {
     setLoggedInUser: (context, event: { user: any }, enq) => {
@@ -20,6 +17,14 @@ export const authStore = createStore({
         ...context,
         user: event.user,
         isAuthenticated: true,
+      };
+    },
+    logOut: (context, event, enq) => {
+      enq.emit.loggedOut(null);
+      return {
+        ...context,
+        user: null,
+        isAuthenticated: false,
       };
     },
   },

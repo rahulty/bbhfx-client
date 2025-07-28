@@ -1,10 +1,9 @@
 "use server";
 import qs from "qs";
 import { fetchAPI } from "@/utils/fetch-api";
-import { getStrapiURL } from "@/utils/get-strapi-url";
 import { cookies } from "next/headers";
+import { BASE_URL } from "./services";
 
-const BASE_URL = getStrapiURL();
 const BLOG_PAGE_SIZE = 3;
 const homePageQuery = qs.stringify({
   populate: {

@@ -1,9 +1,9 @@
 import { fetchAPI } from "@/utils/fetch-api";
 import { getAuthToken } from "./get-token";
-import { getStrapiURL } from "@/utils/get-strapi-url";
+import { BASE_URL } from "../services";
 
 export async function getUserMeLoader() {
-  const baseUrl = getStrapiURL();
+  const baseUrl = BASE_URL;
 
   const url = new URL("/api/users/me", baseUrl);
 
