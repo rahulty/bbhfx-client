@@ -1,10 +1,9 @@
+import { fetchAPI } from "@/utils/fetch-api";
+
 export const DeliveryActions = {
   claimDelivery: async (documentId: string) => {
-    const response = await fetch(`/api/delivery/claim/${documentId}`, {
+    const response = await fetchAPI(`/api/delivery/claim/${documentId}`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
 
     if (!response.ok) {

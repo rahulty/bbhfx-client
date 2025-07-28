@@ -1,3 +1,4 @@
+import { fetchAPI } from "@/utils/fetch-api";
 import { getAuthToken } from "./get-token";
 import { getStrapiURL } from "@/utils/get-strapi-url";
 
@@ -10,15 +11,12 @@ export async function getUserMeLoader() {
   if (!authToken) return { ok: false, data: null, error: null };
 
   try {
-    const response = await fetch(url.href, {
+    const response = await fetchAPI(url.href, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${authToken}`,
-      },
+      authToken,
     });
-    const data = await response.json();
-    if (data.error) return { ok: false, data: null, error: data.error };
+    const data = response;
+    // if (data.error) return { ok: false, data: null, error: data.error };
     return { ok: true, data: data, error: null };
   } catch (error) {
     console.log(error);

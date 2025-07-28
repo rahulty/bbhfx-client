@@ -1,19 +1,18 @@
+import { fetchAPI } from "@/utils/fetch-api";
+
 const BASE_URL = process.env.PUBLIC_API_URL ?? "http://localhost:1337";
 
 export async function subscribeService(email: string) {
   const url = new URL("/api/newsletter-signups", BASE_URL);
 
   try {
-    const response = await fetch(url, {
+    const response = await fetchAPI(url.href, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+      body: {
         data: {
           email,
         },
-      }),
+      },
     });
 
     return response.json();
@@ -46,12 +45,9 @@ export async function eventsSubscribeService(data: EventsSubscribeProps) {
   const url = new URL("/api/event-signups", BASE_URL);
 
   try {
-    const response = await fetch(url, {
+    const response = await fetchAPI(url.href, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ data: { ...data } }),
+      body: { data: { ...data } },
     });
 
     return await response.json();

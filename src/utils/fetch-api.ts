@@ -1,3 +1,4 @@
+import { axiosFetch, FetchOptions } from "./axios-fetch";
 import { getStrapiURL } from "./get-strapi-url";
 
 type NextFetchRequestConfig = {
@@ -31,17 +32,18 @@ export async function fetchAPI(url: string, options: FetchAPIOptions) {
   }
 
   try {
-    const response = await fetch(urlWithBase, headers);
-    const contentType = response.headers.get("content-type");
-    if (
-      contentType &&
-      contentType.includes("application/json") &&
-      response.ok
-    ) {
-      return await response.json();
-    } else {
-      return { status: response.status, statusText: response.statusText };
-    }
+    const response = await axiosFetch(urlWithBase, headers as FetchOptions);
+    // const contentType = response.headers.get("content-type");
+    // if (
+    //   contentType &&
+    //   contentType.includes("application/json") &&
+    //   response.statusText === "OK"
+    // ) {
+    //   return response;
+    // } else {
+    //   return { status: response.status, statusText: response.statusText };
+    // }
+    return response;
   } catch (error) {
     console.error(`Error ${method} data:`, error);
     throw error;
