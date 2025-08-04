@@ -1,15 +1,23 @@
 "use client";
 import { createStore } from "@xstate/store";
 
+const localStorage =
+  typeof global?.window !== "undefined" ? global?.window.localStorage : null;
+const savedSnapshot = localStorage?.getItem("authStore");
+const initialContext = savedSnapshot
+  ? JSON.parse(savedSnapshot)
+  : {
+      user: null,
+      isAuthenticated: false,
+    };
+
 export const authStore = createStore({
-  context: {
-    user: null,
-    isAuthenticated: false,
-  },
+  context: initialContext,
   emits: {
     loggedIn: (user) => ({ user }),
     loggedOut: () => ({}),
   },
+
   on: {
     setLoggedInUser: (context, event: { user: any }, enq) => {
       enq.emit.loggedIn();
@@ -28,4 +36,8 @@ export const authStore = createStore({
       };
     },
   },
+});
+
+authStore.subscribe((state) => {
+  localStorage?.setItem("authStore", JSON.stringify(state.context));
 });
