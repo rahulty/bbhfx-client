@@ -32,7 +32,7 @@ export function DeliveryCard(props: DeliveryCardProps) {
   }
   const { rider, buddy, backup } = roles;
 
-  const [stC, ac] = useActionState(claimDeliveryAction, {
+  const [, ac] = useActionState(claimDeliveryAction, {
     createdClaimedDelivery: null,
   });
   const [, unClaimAc] = useActionState(unClaimDeliveryAction, {});

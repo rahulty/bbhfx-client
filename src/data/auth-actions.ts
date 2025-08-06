@@ -12,7 +12,7 @@ import { authStore } from "@/store/auth-store";
 const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
   path: "/",
-  domain: process.env.HOST ?? "localhost",
+  domain: process.env.STRAPI_API_URL ?? "localhost",
   httpOnly: true,
   secure: process.env.NODE_ENV === "production",
 };

@@ -4,10 +4,7 @@ import Link from "next/link";
 import { StrapiErrors } from "./strapi-errors";
 import { SubmitButton } from "./SubmitButton";
 import { ZodErrors } from "./ZodErrors";
-import { useActionState, useEffect } from "react";
-import { loginUserAction } from "@/data/auth-actions";
 import { authStore } from "@/store/auth-store";
-import { redirect } from "next/navigation";
 import { useSelector } from "@xstate/store/react";
 
 // import {
@@ -33,7 +30,9 @@ import {
   HTMLAttributes,
   InputHTMLAttributes,
   LabelHTMLAttributes,
+  useEffect,
 } from "react";
+import { redirect } from "next/navigation";
 
 const CardHeader = ({
   children,
@@ -74,32 +73,24 @@ const CardTitle = ({
 }: { children: ReactNode } & HTMLAttributes<HTMLHeadingElement>) => (
   <h1 {...restProps}>{children}</h1>
 );
-const INITIAL_STATE = {
-  zodErrors: null,
-  strapiErrors: null,
-  data: null,
-  message: null,
-};
 
 export function SigninForm() {
-  const [formState, formAction] = useActionState(
-    loginUserAction,
-    INITIAL_STATE
-  );
+  const handleFormAction = (formData: FormData) => {
+    authStore.trigger.login({ formData });
+  };
   const user = useSelector(authStore, (s) => s.context.user);
+  const zodErrors = useSelector(authStore, (s) => s.context.zodErrors);
+  const strapiErrors = useSelector(authStore, (s) => s.context.strapiErrors);
 
-  console.log(user, "user from authStore");
   useEffect(() => {
-    if (formState?.user) {
-      authStore.trigger.setLoggedInUser({ user: formState.user });
-
+    if (user) {
       redirect("/dashboard");
     }
-  }, [formState?.user]);
+  }, [user]);
 
   return (
     <div className="w-full max-w-md">
-      <form action={formAction}>
+      <form action={handleFormAction}>
         <Card>
           <CardHeader className="space-y-1">
             <CardTitle className="text-3xl font-bold">Sign In</CardTitle>
@@ -120,7 +111,7 @@ export function SigninForm() {
                 placeholder="username or email"
               />
 
-              <ZodErrors error={formState?.zodErrors?.identifier} />
+              <ZodErrors error={zodErrors?.identifier} />
             </div>
 
             <div className="space-y-2">
@@ -133,14 +124,14 @@ export function SigninForm() {
                 placeholder="password"
               />
 
-              <ZodErrors error={formState?.zodErrors?.password} />
+              <ZodErrors error={zodErrors?.password} />
             </div>
           </CardContent>
 
           <CardFooter className="flex flex-col">
             <SubmitButton className="w-full" text="Sign In" />
 
-            <StrapiErrors error={formState?.strapiErrors} />
+            <StrapiErrors error={strapiErrors} />
           </CardFooter>
         </Card>
 

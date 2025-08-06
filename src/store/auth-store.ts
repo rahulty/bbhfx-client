@@ -1,4 +1,5 @@
 "use client";
+import { loginUserAction } from "@/data/auth-actions";
 import { createStore } from "@xstate/store";
 
 const localStorage =
@@ -19,10 +20,18 @@ export const authStore = createStore({
   },
 
   on: {
+    login: async (context, ev: { formData: FormData }, enq) => {
+      enq.effect(async () => {
+        const actionReturns = await loginUserAction({}, ev.formData);
+        authStore.trigger.setLoggedInUser(actionReturns);
+      });
+      return context;
+    },
     setLoggedInUser: (context, event: { user: any }, enq) => {
       enq.emit.loggedIn();
       return {
         ...context,
+        ...event,
         user: event.user,
         isAuthenticated: true,
       };
