@@ -30,9 +30,8 @@ import {
   HTMLAttributes,
   InputHTMLAttributes,
   LabelHTMLAttributes,
-  useEffect,
 } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const CardHeader = ({
   children,
@@ -75,20 +74,17 @@ const CardTitle = ({
 );
 
 export function SigninForm() {
-  const handleFormAction = (formData: FormData) => {
-    authStore.trigger.login({ formData });
-  };
-  const user = useSelector(authStore, (s) => s.context.user);
+  const router = useRouter();
   const zodErrors = useSelector(authStore, (s) => s.context.zodErrors);
   const strapiErrors = useSelector(authStore, (s) => s.context.strapiErrors);
 
-  authStore.on("loggedIn", () => {
-    redirect("/dashboard");
-  });
+  const handleFormAction = (formData: FormData) => {
+    authStore.trigger.login({ formData });
+  };
 
-  if (user) {
-    return null;
-  }
+  authStore.on("loggedIn", () => {
+    router.replace("/dashboard");
+  });
 
   return (
     <div className="w-full max-w-md">

@@ -7,11 +7,9 @@ import {
   registerUserService,
   loginUserService,
 } from "@/data/services/auth-service";
-const configDomain = new URL(
-  process.env.STRAPI_API_URL ??
-    process.env.NEXT_PUBLIC_STRAPI_API_URL ??
-    "http://localhost:1337"
-).hostname;
+
+const configDomain = new URL(process.env.HOST || "http://localhost:1337")
+  .hostname;
 
 const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
