@@ -82,11 +82,10 @@ export function SigninForm() {
   const zodErrors = useSelector(authStore, (s) => s.context.zodErrors);
   const strapiErrors = useSelector(authStore, (s) => s.context.strapiErrors);
 
-  useEffect(() => {
-    if (user) {
-      redirect("/dashboard");
-    }
-  }, [user]);
+  authStore.on("loggedIn", () => {
+    redirect("/dashboard");
+  });
+
   if (user) {
     return null;
   }
