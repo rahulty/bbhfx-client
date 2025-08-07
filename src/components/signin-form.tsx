@@ -87,6 +87,9 @@ export function SigninForm() {
       redirect("/dashboard");
     }
   }, [user]);
+  if (user) {
+    return null;
+  }
 
   return (
     <div className="w-full max-w-md">
